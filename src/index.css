@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(oklch(97% .03 90 / .07) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(97% .03 90 / .07) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.highlight {
+  background-color: oklch(14% .02 260);
+  color: oklch(97% .03 90);
+  padding: 0 0.35em;
+}
