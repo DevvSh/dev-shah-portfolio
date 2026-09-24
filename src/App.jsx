@@ -1,95 +1,122 @@
 import { useEffect, useState } from 'react'
 
-const SKILLS = ['JAVASCRIPT', 'REACT', 'TAILWIND', 'PHP', 'MYSQL', 'WORDPRESS', 'PYTHON', 'AZURE', 'KUBERNETES', 'C++']
+const SKILLS = ['JAVASCRIPT', 'REACT', 'PYTHON', 'SQL', 'POWER BI', 'AWS', 'AZURE', 'WORDPRESS', 'TAILWIND', 'SEO']
 
 const STATS = [
-  { label: 'STUDYING', value: 'B.IT', sub: 'Cyber Security' },
+  { label: 'STUDYING', value: 'B.IT', sub: 'Grad Mar 2027' },
   { label: 'BASED IN', value: 'Geelong', sub: 'AU' },
   { label: 'COHORT RANK', value: 'Top 10%', sub: 'w/ distinctions' },
-  { label: 'FOCUS', value: 'Full-Stack', sub: 'w/ security edge' },
+  { label: 'FOCUS', value: 'Full-Stack', sub: 'founder & builder' },
 ]
 
 const TIMELINE = [
   {
     n: '01',
-    range: 'MAR 2025 — PRESENT',
-    place: 'GEELONG WEST, AU',
+    range: 'JUL 2026 — PRESENT',
+    place: 'GEELONG, AU',
     tag: 'CURRENT',
-    role: 'IT Support Specialist',
-    org: 'Geelong West Neighborhood House',
+    role: 'Research Assistant',
+    org: 'Deakin University — Solar Panel EL & Low Irradiance Testing',
     bullets: [
-      'Rebuilt the enrolment system in WordPress → 35% faster processing.',
-      'Ran hands-on digital-literacy workshops for 50+ senior residents.',
-      'Automated weekly Azure backups, cutting recovery time by 80%.',
+      'Defined EL and low-irradiance testing protocols for a solar-panel recycling and reconditioning study.',
+      'Built an AI defect-classification model with Ultralytics YOLO, cutting reliance on manual inspection.',
+      'Completed system setup and initial trials across 5 test panels in the first phase.',
     ],
   },
   {
     n: '02',
+    range: 'JUN 2026 — PRESENT',
+    place: 'GEELONG, AU',
+    tag: 'CURRENT',
+    role: 'Full Stack Developer',
+    org: "Deakin University — Freelancing Hub",
+    bullets: [
+      "Audited Geelong Sustainability's site for navigation, content clarity, and mobile responsiveness.",
+      "Delivered prioritised UX recommendations tied to the charity's engagement and education goals.",
+      "Ran the engagement on a fixed two-half-day-per-week schedule through Deakin's freelancing hub.",
+    ],
+  },
+  {
+    n: '03',
+    range: 'APR 2025 — MAR 2026',
+    place: 'MELBOURNE, AU',
+    tag: 'FOUNDED',
+    role: 'Founder',
+    org: 'Jobify.io',
+    bullets: [
+      'Launched a browser-based AI resume/cover-letter assistant — 150+ users in the first two days, zero paid marketing.',
+      'Built the AI engine that auto-generates tailored cover letters and resumes from job listings.',
+      'Expanded into a full career toolkit: job-ad parsing, personalised email drafting, follow-up automation.',
+    ],
+  },
+  {
+    n: '04',
+    range: 'MAR 2025 — MAR 2026',
+    place: 'GEELONG WEST, AU',
+    tag: 'ARCHIVED',
+    role: 'IT Support Specialist',
+    org: 'Geelong West Neighborhood House',
+    bullets: [
+      'Revamped the online enrolment system on WordPress, cutting manual admin work by 35%.',
+      'Designed automated weekly Azure backups, cutting recovery time by 80%.',
+      'Delivered digital-literacy training to 50+ community members.',
+    ],
+  },
+  {
+    n: '05',
     range: 'MAR 2024 — PRESENT',
     place: 'GEELONG, AU',
     tag: 'ONGOING',
     role: 'Wellbeing Ambassador',
     org: 'Deakin University',
     bullets: [
-      'Designed stress-management workshops for 200+ students (95% CSAT).',
-      'Coordinated with counsellors to streamline mental-health resource flow.',
+      'Designed and facilitated wellbeing workshops reaching 200+ students.',
+      'Partnered with university departments to improve access to mental-health resources — 95% positive feedback.',
+    ],
+  },
+]
+
+const LEADERSHIP = [
+  {
+    n: '01',
+    range: 'JAN 2026 — PRESENT',
+    place: 'LEOPOLD, GEELONG',
+    tag: 'CURRENT',
+    role: 'Store Manager',
+    org: "McDonald's, Leopold",
+    bullets: [
+      'Led and coordinated a full store team, strengthening shift communication.',
+      'Refined stock and prep management to cut out-of-stock incidents at peak trade.',
+      'Streamlined kitchen and counter workflows to shorten customer wait times.',
+    ],
+  },
+  {
+    n: '02',
+    range: 'APR 2025 — MAR 2026',
+    place: 'WAURN PONDS, GEELONG',
+    tag: 'COMPLETED',
+    role: 'Manager',
+    org: "Domino's, Waurn Ponds",
+    bullets: [
+      'Sped up order turnaround by 20%, supervising a team of 8 through peak hours.',
+      'Cut labour costs by 15% with a smarter, demand-aligned rostering system.',
     ],
   },
   {
     n: '03',
-    range: 'MAR 2023 — PRESENT',
-    place: 'WAURN PONDS, AU',
-    tag: 'NIGHT SHIFT',
-    role: 'Shift Manager',
-    org: "Domino's, Waurn Ponds",
+    range: 'MAR 2024 — PRESENT',
+    place: 'GEELONG, AU',
+    tag: 'ONGOING',
+    role: 'Founder & Coordinator',
+    org: 'Hike Youth',
     bullets: [
-      'Led a team of 8 through peak hours — order speed up 20%.',
-      'Rewrote the staff schedule → 15% cut in labour cost, quality intact.',
-    ],
-  },
-  {
-    n: '04',
-    range: 'JUL 2022 — SEP 2022',
-    place: 'AHMEDABAD, IN',
-    tag: 'ARCHIVED',
-    role: 'Project Coordinator',
-    org: 'Government of India',
-    bullets: [
-      'Delivered a defence expo with 50+ exhibitors and 5,000+ attendees.',
-      'Owned stakeholder comms and end-to-end logistics for sponsors.',
+      'Founded a youth hiking initiative connecting students and young professionals.',
+      'Built a new outdoor-wellness community from scratch in Geelong.',
     ],
   },
 ]
 
 const PROJECTS = [
-  {
-    tags: ['REACT', 'VITE', 'TAILWIND'],
-    title: 'This Portfolio',
-    bullets: [
-      'Fully custom design system — OKLCH color tokens, hand-drawn type pairing.',
-      'Data-driven, single-file React architecture, no component libraries.',
-      'Built and shipped solo, front to back of the deploy pipeline.',
-    ],
-    stats: [
-      { value: '0', label: 'UI LIBS' },
-      { value: '6', label: 'SECTIONS' },
-      { value: '100%', label: 'HAND-CODED' },
-    ],
-  },
-  {
-    tags: ['PHP', 'MYSQL', 'WORDPRESS'],
-    title: 'Enrolment System Rebuild',
-    bullets: [
-      "Rebuilt a neighborhood house's enrolment system end-to-end.",
-      '35% faster processing for the staff running it daily.',
-      'Replaced a paper-based intake with a working WordPress + MySQL flow.',
-    ],
-    stats: [
-      { value: '35%', label: 'FASTER' },
-      { value: 'LIVE', label: 'IN PROD' },
-      { value: 'PHP', label: 'BACKEND' },
-    ],
-  },
   {
     tags: ['PYTHON', 'REQUESTS', 'BEAUTIFULSOUP'],
     title: 'Web Security Analyzer',
@@ -106,7 +133,7 @@ const PROJECTS = [
   },
   {
     tags: ['KALI', 'METASPLOIT', 'DVWA', 'WIRESHARK'],
-    title: 'Home Cybersecurity Lab',
+    title: 'Home Lab Pentesting',
     bullets: [
       '20+ scripted penetration tests against isolated VMs.',
       'Documented mitigations and rewrote weak Python patterns.',
@@ -118,13 +145,70 @@ const PROJECTS = [
       { value: '24/7', label: 'UPTIME' },
     ],
   },
+  {
+    tags: ['WORDPRESS', 'UX'],
+    title: 'Digital Enrolment Redesign',
+    bullets: [
+      "Rebuilt a neighborhood house's enrolment system end-to-end on WordPress.",
+      'Cut manual admin work by 35% for the staff running it daily.',
+      'Replaced a paper-based intake with a working, member-facing flow.',
+    ],
+    stats: [
+      { value: '35%', label: 'ADMIN CUT' },
+      { value: 'LIVE', label: 'IN PROD' },
+      { value: 'WP', label: 'STACK' },
+    ],
+  },
+  {
+    tags: ['AZURE', 'BACKUP', 'AUTOMATION'],
+    title: 'Automated Backup System',
+    bullets: [
+      "Designed and scheduled automated weekly Azure cloud backups for GWNH's systems.",
+      'Cut potential data-recovery time by 80%.',
+      'Removed manual backup steps from the day-to-day IT workflow.',
+    ],
+    stats: [
+      { value: '80%', label: 'FASTER RECOVERY' },
+      { value: '52', label: 'BACKUPS/YR' },
+      { value: 'AZURE', label: 'PLATFORM' },
+    ],
+  },
+  {
+    tags: ['SEO', 'UX', 'ACCESSIBILITY'],
+    title: 'NGO SEO Boost',
+    bullets: [
+      "Audited Geelong Sustainability's site for navigation, content, and mobile responsiveness.",
+      'Delivered prioritised SEO and UX recommendations tied to the engagement and education goals.',
+      'Aimed at converting more visitors into climate-action participants.',
+    ],
+    stats: [
+      { value: 'FULL', label: 'SITE AUDIT' },
+      { value: '2', label: 'DAYS/WK' },
+      { value: 'NGO', label: 'CLIENT' },
+    ],
+  },
+  {
+    tags: ['REACT', 'VITE', 'TAILWIND'],
+    title: 'This Portfolio',
+    bullets: [
+      'Fully custom design system — OKLCH color tokens, hand-drawn type pairing.',
+      'Data-driven, single-file React architecture, no component libraries.',
+      'Built and shipped solo, front to back of the deploy pipeline.',
+    ],
+    stats: [
+      { value: '0', label: 'UI LIBS' },
+      { value: '6', label: 'SECTIONS' },
+      { value: '100%', label: 'HAND-CODED' },
+    ],
+  },
 ]
 
 const TOOLBOX = [
-  { label: '// WEB', items: ['JavaScript', 'React', 'HTML/CSS', 'Tailwind', 'WordPress', 'PHP', 'MySQL'] },
-  { label: '// LANGUAGES', items: ['Python', 'C++', 'Java', 'SQL'] },
-  { label: '// CLOUD / DEVOPS', items: ['Azure', 'AWS', 'Kubernetes'] },
-  { label: '// SECURITY', items: ['Kali Linux', 'Metasploit', 'Wireshark', 'DVWA'] },
+  { label: '// WEB', items: ['JavaScript', 'React', 'HTML/CSS', 'Tailwind', 'WordPress', 'Git'] },
+  { label: '// DATA', items: ['Python', 'SQL', 'Excel', 'Power BI'] },
+  { label: '// CLOUD', items: ['AWS', 'Azure'] },
+  { label: '// GROWTH', items: ['SEO', 'Social Media Campaigns', 'Google Workspace'] },
+  { label: '// SECURITY (SIDE PROJECTS)', items: ['Kali Linux', 'Metasploit', 'Wireshark', 'DVWA'] },
   { label: '// HUMAN STUFF', items: ['Stakeholder coordination', 'Workshop facilitation', 'Crisis management'] },
 ]
 
@@ -230,8 +314,8 @@ function Who() {
         shah.
       </h1>
       <p className="mt-8 max-w-2xl text-lg sm:text-xl text-cream/80 leading-relaxed">
-        Full-stack developer with a <span className="highlight">cybersecurity</span> backbone. I build things
-        end-to-end — and I know exactly how they could break.
+        Full-stack developer and <span className="highlight">founder</span>. I've shipped an AI product to 150+
+        users, rebuilt systems that save real hours, and I still know exactly how things could break.
       </p>
 
       <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-edge/25 pt-8">
@@ -279,7 +363,7 @@ function Where() {
           <SectionLabel n="03" title="WHERE" className="text-coral mb-6" />
           <h2 className="font-hand font-bold text-6xl sm:text-8xl leading-none">places I've tinkered at.</h2>
         </div>
-        <p className="hidden sm:block font-mono text-sm text-ink/50">04 STOPS</p>
+        <p className="hidden sm:block font-mono text-sm text-ink/50">05 STOPS</p>
       </div>
 
       <div className="max-w-6xl mx-auto space-y-6">
@@ -322,13 +406,64 @@ function Where() {
   )
 }
 
+function Leadership() {
+  return (
+    <section className="bg-cream text-ink px-6 sm:px-10 py-24">
+      <div className="flex items-baseline justify-between mb-12">
+        <div>
+          <SectionLabel n="04" title="LEADERSHIP" className="text-coral mb-6" />
+          <h2 className="font-hand font-bold text-6xl sm:text-8xl leading-none">teams I've run.</h2>
+        </div>
+        <p className="hidden sm:block font-mono text-sm text-ink/50">03 ROLES</p>
+      </div>
+
+      <div className="max-w-6xl mx-auto space-y-6">
+        {LEADERSHIP.map((item) => (
+          <div
+            key={item.n}
+            className="group relative border-2 border-ink px-6 sm:px-8 py-6 bg-cream hover:bg-ink transition-colors"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3 font-mono text-xs text-ink/60 group-hover:text-cream/60 transition-colors">
+                <span className="bg-ink text-cream px-2 py-0.5 group-hover:bg-accent group-hover:text-ink transition-colors">
+                  {item.n}
+                </span>
+                <span>
+                  {item.range} · {item.place}
+                </span>
+              </div>
+              <span className="font-mono text-xs tracking-[0.15em] text-coral group-hover:text-accent transition-colors">
+                {item.tag}
+              </span>
+            </div>
+            <h3 className="font-hand text-3xl sm:text-4xl mb-4 group-hover:text-cream transition-colors">
+              {item.role}{' '}
+              <span className="text-ink/40 group-hover:text-cream/60 transition-colors">// {item.org}</span>
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-2">
+              {item.bullets.map((b, i) => (
+                <p
+                  key={i}
+                  className="border-l-2 border-coral group-hover:border-accent pl-4 text-ink/80 group-hover:text-cream/80 transition-colors"
+                >
+                  {b}
+                </p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function What() {
   return (
     <section className="bg-background px-6 sm:px-10 py-24">
-      <SectionLabel n="04" title="WHAT" className="text-accent mb-6" />
+      <SectionLabel n="05" title="WHAT" className="text-accent mb-6" />
       <h2 className="font-hand font-bold text-6xl sm:text-8xl text-cream mb-12">best work.</h2>
 
-      <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {PROJECTS.map((p) => (
           <div
             key={p.title}
@@ -362,7 +497,7 @@ function What() {
 function Toolbox() {
   return (
     <section className="bg-background px-6 sm:px-10 py-24">
-      <SectionLabel n="05" title="TOOLBOX" className="text-accent mb-6" />
+      <SectionLabel n="06" title="TOOLBOX" className="text-accent mb-6" />
       <h2 className="font-hand font-bold text-5xl sm:text-7xl text-cream mb-12">things I use daily.</h2>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -389,7 +524,7 @@ function Toolbox() {
 function Contact() {
   return (
     <section className="bg-background px-6 sm:px-10 py-24 text-center">
-      <SectionLabel n="06" title="SAY HI" className="text-accent mb-6 justify-center" />
+      <SectionLabel n="07" title="SAY HI" className="text-accent mb-6 justify-center" />
       <h2 className="font-hand font-bold text-6xl sm:text-8xl text-cream mb-8">contact me.</h2>
       <p className="max-w-xl mx-auto text-cream/70 leading-relaxed mb-10">
         Full-stack roles, internships, freelance work, or a friendly ping — I answer everything. Faster if you use
@@ -447,6 +582,7 @@ function App() {
       <Marquee />
       <Why />
       <Where />
+      <Leadership />
       <What />
       <Toolbox />
       <Contact />
